@@ -6,7 +6,7 @@
 
 ### *TryHackMe Hacker Holidays — Day 8 Walkthrough*
 
-<img src="docs/assets/00-room-banner.png" width="100%" alt="Towel on the Sunbed Banner"/>
+<img src="docs/assets/01-dashboard-initial.png" width="100%" alt="Towel on the Sunbed Banner"/>
 
 ![TryHackMe](https://img.shields.io/badge/TryHackMe-Hacker%20Holidays-red?style=for-the-badge\&logo=tryhackme)
 ![Difficulty](https://img.shields.io/badge/Difficulty-Easy-success?style=for-the-badge)
