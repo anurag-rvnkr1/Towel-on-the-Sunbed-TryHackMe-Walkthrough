@@ -1,371 +1,374 @@
 ---
 layout: default
-title: "Towel on the Sunbed — TryHackMe Walkthrough"
-description: "Professional GitHub Pages documentation for the Towel on the Sunbed TryHackMe challenge."
+title: "🌞 Towel on the Sunbed — TryHackMe Walkthrough"
+description: "Professional GitHub Pages documentation for the Towel on the Sunbed TryHackMe challenge by Anurag Revankar."
 ---
 
 <div align="center">
 
 # 🌞 Towel on the Sunbed
 
-### Professional TryHackMe Walkthrough & Technical Documentation
+### Professional TryHackMe Walkthrough & Security Case Study
 
 **Hacker Holidays — Day 8**
 
 *Business Logic Race Condition • Burp Suite Repeater • Web Application Security*
 
+<br>
+
 ![TryHackMe](https://img.shields.io/badge/TryHackMe-Hacker%20Holidays-red?style=for-the-badge&logo=tryhackme)
 ![Difficulty](https://img.shields.io/badge/Difficulty-Easy-success?style=for-the-badge)
-![Category](https://img.shields.io/badge/Web-Business%20Logic-blue?style=for-the-badge)
-![Vulnerability](https://img.shields.io/badge/Race%20Condition-Concurrency-orange?style=for-the-badge)
-![Documentation](https://img.shields.io/badge/GitHub%20Pages-Portfolio-black?style=for-the-badge&logo=github)
+![Category](https://img.shields.io/badge/Category-Business%20Logic-blue?style=for-the-badge)
+![Race Condition](https://img.shields.io/badge/Vulnerability-Race%20Condition-orange?style=for-the-badge)
+![Burp Suite](https://img.shields.io/badge/Burp%20Suite-Repeater-F26C21?style=for-the-badge&logo=burpsuite)
 
 ---
 
-*A portfolio-ready walkthrough documenting the complete exploitation of a business logic race condition inside a cryptocurrency staking application using Burp Suite Repeater.*
+### 👨‍💻 Cybersecurity Portfolio Documentation
+
+*Documented and analyzed by **Anurag Revankar***
+
+A complete penetration testing walkthrough demonstrating how concurrent HTTP requests can bypass server-side reward validation through a **business logic race condition**.
 
 </div>
 
 ---
 
-# 📌 About This Challenge
+# 📑 Documentation Overview
 
-> **Towel on the Sunbed** is a web application challenge from the **TryHackMe Hacker Holidays** series that teaches how **race conditions** can compromise server-side business logic.
+> This page serves as the **official GitHub Pages documentation** for the **Towel on the Sunbed** TryHackMe room.
 
-Unlike traditional web vulnerabilities, this challenge focuses on exploiting the application's workflow rather than manipulating user input. The target application awards cryptocurrency rewards every **24 hours**, and the objective is to unlock the **Whale Vault** by abusing concurrent reward processing.
+Instead of simply solving the challenge, this documentation explains:
 
-This documentation demonstrates the complete methodology, technical analysis, screenshots, defensive recommendations, and security lessons learned during the assessment.
+- The application's business workflow.
+- Enumeration methodology.
+- HTTP interception process.
+- Race condition exploitation.
+- Root cause analysis.
+- Defensive security recommendations.
+- Blue Team detection opportunities.
+- Security lessons learned.
+
+It is designed as a **professional security case study** suitable for recruiters, hiring managers, and cybersecurity portfolio reviews.
 
 ---
 
-# 🎯 Challenge Overview
+# 🎯 Challenge Information
 
 | Property | Details |
-|----------|---------|
-| **Platform** | TryHackMe |
-| **Series** | Hacker Holidays |
-| **Challenge** | Towel on the Sunbed |
-| **Difficulty** | Easy |
-| **Category** | Web Application Security |
-| **Primary Vulnerability** | Business Logic Race Condition |
-| **Tools Used** | Burp Suite Community Edition, Firefox |
-| **Documentation Style** | Penetration Testing Portfolio |
+|-----------|---------|
+| 🎮 Platform | **TryHackMe** |
+| 🎄 Series | **Hacker Holidays** |
+| ☀️ Room | **Towel on the Sunbed** |
+| 🎯 Focus | Business Logic Vulnerability |
+| 🧩 Vulnerability | Race Condition |
+| 🛠️ Tools | Burp Suite Community Edition, Firefox |
+| 💻 Environment | Linux Desktop |
+| 📘 Documentation Type | Penetration Testing Report |
 
 ---
 
-# 🚀 Attack Chain
+# 🧠 What You'll Learn
 
 <div align="center">
 
-```text
-User Login
-    │
-    ▼
-Portfolio Dashboard Enumeration
-    │
-    ▼
-Capture Reward Request
-    │
-    ▼
-Baseline Cooldown Validation
-    │
-    ▼
-Duplicate Authenticated Requests
-    │
-    ▼
-Group Requests in Burp Repeater
-    │
-    ▼
-Send Requests in Parallel
-    │
-    ▼
-Multiple Rewards Granted
-    │
-    ▼
-Whale Vault Unlocked
-    │
-    ▼
-Challenge Completed (Flag Redacted)
-```
+| 🌐 Web Security | 🛡️ Burp Suite | 🔵 Blue Team |
+|---|---|---|
+| Business Logic Testing | HTTP Interception | Detection Opportunities |
+| State Transition Analysis | Request Replay | Log Correlation |
+| Race Conditions | Parallel Requests | Security Monitoring |
+| Reward Workflow Abuse | Repeater Groups | Incident Investigation |
 
 </div>
 
 ---
 
-# 🛠️ Tools & Technologies
+# 🗂️ Walkthrough Roadmap
 
-| Tool | Purpose |
-|------|---------|
-| 🛡️ **Burp Suite Proxy** | Intercept authenticated HTTP traffic. |
-| 🔁 **Burp Repeater** | Replay and execute concurrent requests. |
-| 🌐 **Firefox Browser** | Interact with the application through Burp. |
-| 💻 **Linux Environment** | Testing workstation. |
-| 🎯 **TryHackMe** | Authorized lab environment. |
-
----
-
-# 🧠 Skills Demonstrated
-
-<table>
-<tr>
-<td width="50%">
-
-### Web Security
-
-- Business Logic Testing
-- HTTP Request Analysis
-- Session-Aware Testing
-- State Transition Validation
-- Reward Workflow Enumeration
-
-</td>
-<td width="50%">
-
-### Burp Suite
-
-- Proxy Interception
-- Request Replay
-- Repeater Groups
-- Parallel Request Execution
-- Response Comparison
-
-</td>
-</tr>
-</table>
+```text
+Authentication
+      │
+      ▼
+Dashboard Enumeration
+      │
+      ▼
+Reward Workflow Analysis
+      │
+      ▼
+Capture HTTP Request
+      │
+      ▼
+Burp Suite Repeater
+      │
+      ▼
+Parallel Request Execution
+      │
+      ▼
+Multiple Rewards Credited
+      │
+      ▼
+Whale Vault Unlock
+      │
+      ▼
+Root Cause Analysis & Mitigation
+```
 
 ---
 
-# 📂 Documentation Navigation
+# ⚠️ Vulnerability Spotlight
 
-| Section | Description |
-|---------|-------------|
-| **README.md** | Repository overview and walkthrough preview. |
-| **Documentation/Documentation.md** | Complete technical penetration testing report. |
-| **Documentation.docx** | Portfolio-ready report in Word format. |
-| **Resources/notes.md** | Learning notes and methodology summary. |
-| **docs/index.md** | GitHub Pages landing page (this page). |
+<div align="center">
+
+## Business Logic Race Condition
+
+*"The application validates multiple reward requests before updating shared cooldown state."*
+
+</div>
+
+### Why this vulnerability matters
+
+Unlike SQL Injection or XSS, race conditions exploit **application timing**.
+
+The attacker never sends malformed input.
+
+Instead, they abuse legitimate functionality by triggering multiple authenticated requests simultaneously.
+
+### Security Principle Violated
+
+```text
+Expected
+───────────────
+Validate Reward
+      │
+Grant Reward
+      │
+Update Cooldown
+      │
+Reject Future Requests
+
+Observed
+───────────────
+Validate Reward
+Validate Reward
+Validate Reward
+      │
+Grant Reward
+Grant Reward
+Grant Reward
+      │
+Update Cooldown
+```
+
+The cooldown mechanism is updated **too late**.
 
 ---
 
-# 🌐 Challenge Walkthrough
+# 🌐 Stage 1 — Initial Application Enumeration
 
----
+The assessment begins after authenticating into the cryptocurrency dashboard.
 
-## Stage 1 — Initial Dashboard Enumeration
-
-The application presents a cryptocurrency investment dashboard containing a staking system and a Whale Vault progression feature.
-
-<p align="center">
 <img src="assets/01-dashboard-initial.png" width="100%">
-</p>
 
-**Figure 1 — Initial cryptocurrency dashboard after authentication**
+**Figure 1 — Initial dashboard presented after authentication**
 
-### Initial Observations
+### Key Observations
 
-- Authenticated user dashboard.
-- Cryptocurrency portfolio overview.
-- Staking reward mechanism.
-- Whale Vault locked until balance threshold is reached.
+| Observation | Security Relevance |
+|-------------|-------------------|
+| Cryptocurrency dashboard | Primary attack surface. |
+| Whale Vault locked | Privileged functionality gated by balance. |
+| Reward button available | Candidate business logic endpoint. |
+| Session-based login | Authenticated testing required. |
 
 ---
 
-## Stage 2 — Understanding the Reward Workflow
+# 💰 Stage 2 — Understanding the Reward Mechanism
 
-The staking feature awards users **50 PONZI** tokens every **24 hours**.
+The dashboard explains how staking rewards work.
 
-<p align="center">
 <img src="assets/02-dashboard-staking.png" width="100%">
-</p>
 
-**Figure 2 — Daily staking reward and Whale Vault requirement**
+**Figure 2 — Daily staking reward mechanism**
 
-### Expected Workflow
+### Expected Business Workflow
 
-| Day | Expected Balance |
-|-----|------------------|
-| Day 1 | 50 |
-| Day 2 | 100 |
-| Day 3 | 150 |
-| Whale Vault | Unlocked |
+| Day | Reward | Balance |
+|-----|--------|---------|
+| Day 1 | +50 | 50 |
+| Day 2 | +50 | 100 |
+| Day 3 | +50 | 150 |
 
-The application's business logic assumes rewards cannot be claimed simultaneously.
+Only after Day 3 should the Whale Vault unlock.
+
+This assumption becomes the primary target of testing.
 
 ---
 
-## Stage 3 — Capturing the Reward Request
+# 🔍 Stage 3 — Capturing the Reward Request
 
-Burp Suite intercepts the authenticated reward request before it reaches the server.
+Burp Suite Proxy intercepts the reward request before it reaches the server.
 
-<p align="center">
 <img src="assets/03-burp-captured-claim.png" width="100%">
-</p>
 
-**Figure 3 — Captured HTTP reward request**
+**Figure 3 — Captured authenticated reward request**
 
-### Endpoint Analysis
+### Endpoint Characteristics
 
 ```http
 POST /claim
 ```
 
-Key characteristics:
+**Authentication:** Session Cookie
 
-- Authenticated endpoint.
-- Session cookie required.
-- State-changing request.
-- No payload manipulation needed.
+**Purpose:** Claim staking reward.
+
+### Why This Endpoint Is Interesting
+
+- Authenticated.
+- State-changing.
+- Updates user balance.
+- Enforces cooldown.
+- Ideal candidate for concurrency testing.
 
 ---
 
-## Stage 4 — Sending the Request to Burp Repeater
+# 🔁 Stage 4 — Burp Suite Repeater
 
-The intercepted request is transferred into Burp Repeater for controlled replay.
+The intercepted request is transferred into **Burp Repeater**.
 
-<p align="center">
 <img src="assets/04-repeater-request.png" width="100%">
-</p>
 
 **Figure 4 — Reward request inside Burp Repeater**
 
-### Purpose
+### Why Repeater?
 
-- Preserve authentication.
-- Duplicate identical requests.
-- Test concurrent execution.
+- Preserve session.
+- Duplicate requests.
+- Replay safely.
+- Execute grouped requests simultaneously.
 
 ---
 
-## Stage 5 — Creating Parallel Request Groups
+# ⚡ Stage 5 — Parallel Request Groups
 
-Several identical authenticated requests are grouped together.
+Multiple identical requests are grouped.
 
-<p align="center">
 <img src="assets/05-repeater-tab-group.png" width="100%">
-</p>
 
-**Figure 5 — Request grouping for race condition testing**
+**Figure 5 — Request grouping inside Repeater**
 
-The request group ensures multiple requests are transmitted at nearly the same moment.
+### Testing Goal
+
+> Determine whether multiple requests pass reward validation before cooldown is committed.
 
 ---
 
-## Stage 6 — Triggering the Race Condition
+# 🚀 Stage 6 — Triggering the Race Condition
 
-Burp Suite's **Send Group in Parallel** feature dispatches all grouped requests simultaneously.
+Burp Suite sends every grouped request simultaneously.
 
-<p align="center">
 <img src="assets/06-repeater-parallel-send.png" width="100%">
-</p>
 
-**Figure 6 — Concurrent execution using Burp Repeater**
+**Figure 6 — Parallel execution**
 
-### Testing Objective
-
-Determine whether multiple authenticated requests can pass reward validation before cooldown state is updated.
-
----
-
-## Stage 7 — Observing Concurrent Responses
-
-Multiple reward requests receive successful responses during the same execution window.
-
-<p align="center">
-<img src="assets/07-parallel-responses.png" width="100%">
-</p>
-
-**Figure 7 — Multiple successful reward responses**
-
-### Security Observation
-
-Instead of rejecting duplicate reward claims, the application credits several rewards concurrently.
-
-This behavior confirms a **business logic race condition**.
-
----
-
-## Stage 8 — Whale Vault Unlock
-
-Refreshing the application validates that the balance has been permanently updated.
-
-<p align="center">
-<img src="assets/08-whale-vault-unlocked.png" width="100%">
-</p>
-
-**Figure 8 — Whale Vault unlocked after successful race condition**
-
-The reward threshold is reached without waiting multiple days.
-
----
-
-## Stage 9 — Completion Evidence
-
-The Whale Vault reveals the challenge completion page.
-
-<p align="center">
-<img src="assets/09-flag-redacted.png" width="100%">
-</p>
-
-**Figure 9 — Final flag evidence (redacted)**
-
-> 🔒 The challenge flag is intentionally hidden to preserve the learning experience.
-
----
-
-## Stage 10 — Final Application State
-
-<p align="center">
-<img src="assets/10-whale-vault-final.png" width="100%">
-</p>
-
-**Figure 10 — Completed Whale Vault state**
-
----
-
-# 🔍 Technical Deep Dive
-
-## Race Condition Explained
-
-### Expected Secure Flow
-
-```text
-Check cooldown
-      │
-      ▼
-Grant reward
-      │
-      ▼
-Update cooldown
-```
-
-Only one request succeeds.
-
----
-
-### Vulnerable Flow
+### Concurrency Visualization
 
 ```text
 Request A
 Request B
 Request C
+
       │
       ▼
-Eligibility checked simultaneously
+
+Server receives requests together.
+
+      │
       ▼
-Multiple rewards granted
-      ▼
-Cooldown updated afterwards
+
+Cooldown still valid for every request.
 ```
 
-The server validates multiple requests before committing shared account state.
+No payload modification was required.
 
 ---
 
-# ⚙️ Root Cause Analysis
+# 📊 Stage 7 — Response Analysis
 
-The application's reward endpoint performs **validation** and **state updates** separately.
+The responses reveal inconsistent business logic behavior.
 
-### Missing Atomic Transaction
+<img src="assets/07-parallel-responses.png" width="100%">
+
+**Figure 7 — Multiple successful reward responses**
+
+### Observed Behavior
+
+| Request | Result |
+|---------|--------|
+| Request A | ✅ Success |
+| Request B | ✅ Success |
+| Request C | ✅ Success |
+
+Multiple authenticated requests receive valid rewards.
+
+---
+
+# 🏆 Stage 8 — Whale Vault Unlock
+
+Refreshing the dashboard confirms persistent application state changes.
+
+<img src="assets/08-whale-vault-unlocked.png" width="100%">
+
+**Figure 8 — Whale Vault unlocked**
+
+### Validation Result
+
+- Balance permanently increased.
+- Whale status activated.
+- Vault accessible.
+
+This confirms the race condition affected **server-side state**, not client-side UI.
+
+---
+
+# 🔒 Stage 9 — Completion Evidence
+
+<img src="assets/09-flag-redacted.png" width="100%">
+
+**Figure 9 — Challenge completion evidence**
+
+> The final flag has been intentionally **redacted** for responsible public documentation.
+
+---
+
+# ✅ Stage 10 — Final Application State
+
+<img src="assets/10-whale-vault-final.png" width="100%">
+
+**Figure 10 — Final completed application state**
+
+---
+
+# 🔬 Root Cause Analysis
+
+## Why the Vulnerability Exists
+
+The reward endpoint appears to perform validation separately from state updates.
+
+### Secure Design
+
+```text
+BEGIN TRANSACTION
+
+Check cooldown
+Lock reward record
+Update balance
+Update cooldown
+
+COMMIT
+```
+
+### Vulnerable Design
 
 ```python
 if reward_available(user):
@@ -373,108 +376,137 @@ if reward_available(user):
     update_cooldown(user)
 ```
 
-Multiple requests evaluate `reward_available()` before `update_cooldown()` completes.
+Every concurrent request evaluates `reward_available()` before cooldown changes.
 
 ---
 
-## Why Sequential Replay Failed
+# 🛡️ Security Impact
 
-Sequential replay updates cooldown before the next request arrives.
+## Potential Real-World Risk
 
-Parallel replay allows several requests to enter the same validation window.
+| Industry | Possible Abuse |
+|----------|----------------|
+| Crypto Wallets | Duplicate token rewards. |
+| Cashback Apps | Cashback farming. |
+| Loyalty Programs | Unlimited points. |
+| Banking Apps | Double credit transactions. |
+| E-commerce | Coupon reuse. |
 
----
+### CIA Impact
 
-# 💥 Security Impact
-
-| Impact Area | Description |
-|-------------|-------------|
-| **Integrity** | Duplicate reward credits modify account balance. |
-| **Business Logic** | Intended cooldown enforcement bypassed. |
-| **Privilege Progression** | Whale Vault unlocked earlier than intended. |
-| **Financial Risk** | Similar flaws could affect cashback, loyalty, or cryptocurrency systems. |
-
----
-
-# 🛡️ Defensive Recommendations
-
-## Atomic Transactions
-
-Ensure validation and reward updates occur within a single transaction.
-
-## Row-Level Locking
-
-Prevent concurrent updates to the same account record.
-
-## Idempotency Keys
-
-Reject duplicate reward requests processed within the same reward period.
-
-## Concurrency Testing
-
-Include automated parallel request testing during QA and security testing.
-
-## Audit Logging
-
-Log repeated state-changing requests for anomaly detection.
+| Principle | Severity |
+|-----------|----------|
+| Confidentiality | 🟢 Low |
+| Integrity | 🔴 High |
+| Availability | 🟢 Low |
 
 ---
 
 # 🔵 Blue Team Detection Opportunities
 
-Potential detection signals include:
+SOC analysts can detect race-condition abuse through unusual reward activity.
 
-| Indicator | Detection Opportunity |
-|-----------|----------------------|
-| Same session sending `/claim` repeatedly | High-confidence alert. |
-| Multiple successful reward events within milliseconds | Business logic abuse detection. |
-| Rapid balance growth | Financial integrity monitoring. |
-| Concurrent authenticated POST requests | Suspicious session behavior. |
+### Indicators
 
----
+| Signal | Detection Strategy |
+|--------|--------------------|
+| Multiple POST `/claim` | Same session within milliseconds. |
+| Duplicate reward events | Balance anomaly detection. |
+| Rapid privilege progression | Reward threshold monitoring. |
+| High-frequency authenticated requests | Behavioral analytics. |
 
-# 🧬 MITRE ATT&CK Mapping *(Educational)*
+### Example Detection Rule
 
-| Technique | Relevance |
-|-----------|-----------|
-| **Valid Accounts (T1078)** | Uses legitimate authenticated session. |
-| **Application Layer Protocol (T1071)** | HTTP used for exploitation. |
-| **Exploitation of Public-Facing Application** | Vulnerable reward endpoint abused. |
+```text
+IF
 
----
+Same Session
+POST /claim
+≥2 Successful Requests
+Within One Second
 
-# 📚 Learning Outcomes
+THEN
 
-After completing this room, I strengthened practical knowledge in:
-
-- Business Logic Vulnerabilities
-- Race Condition Identification
-- Burp Suite Repeater
-- Concurrent HTTP Request Testing
-- State Transition Analysis
-- Secure Reward Workflow Design
-- Technical Penetration Testing Documentation
+Raise Business Logic Abuse Alert.
+```
 
 ---
 
-# 📊 Evidence Summary
+# 🧬 MITRE ATT&CK Mapping
 
-| Screenshot | Description |
-|------------|-------------|
-| `01-dashboard-initial.png` | Dashboard after login. |
-| `02-dashboard-staking.png` | Reward workflow. |
-| `03-burp-captured-claim.png` | Captured reward request. |
-| `04-repeater-request.png` | Request moved into Repeater. |
-| `05-repeater-tab-group.png` | Request grouping. |
-| `06-repeater-parallel-send.png` | Parallel request execution. |
-| `07-parallel-responses.png` | Successful concurrent responses. |
-| `08-whale-vault-unlocked.png` | Whale Vault unlocked. |
-| `09-flag-redacted.png` | Completion evidence. |
-| `10-whale-vault-final.png` | Final application state. |
+| Technique | Why It Applies |
+|-----------|----------------|
+| **Valid Accounts (T1078)** | Exploit uses authenticated account. |
+| **Application Layer Protocol (T1071)** | HTTP communication used. |
+| **Exploitation of Public-Facing Application** | Vulnerable web endpoint targeted. |
 
 ---
 
-# 📁 Repository Structure
+# 📚 OWASP Mapping
+
+| OWASP Category | Relevance |
+|----------------|----------|
+| **A01 — Broken Access Control** | Business functionality unlocked improperly. |
+| **A04 — Insecure Design** | Missing concurrency controls. |
+| **A05 — Security Misconfiguration** | Improper reward workflow implementation. |
+
+---
+
+# 🛠️ Defensive Recommendations
+
+### Immediate Fixes
+
+- Atomic reward transactions.
+- Row-level locking.
+- Idempotency keys.
+- Server-side cooldown enforcement.
+- Concurrency regression testing.
+- Audit logging.
+
+### Secure Reward Workflow
+
+```text
+User
+ │
+ ▼
+Reward Service
+ │
+ ▼
+Transaction Lock
+ │
+ ▼
+Eligibility Validation
+ │
+ ▼
+Balance Update
+ │
+ ▼
+Cooldown Commit
+ │
+ ▼
+Audit Log
+ │
+ ▼
+Response
+```
+
+---
+
+# 📖 Key Learning Outcomes
+
+After completing this room, I practiced:
+
+- Business Logic Vulnerability Analysis.
+- HTTP Request Interception.
+- Burp Suite Repeater.
+- Concurrent Request Testing.
+- State Transition Validation.
+- Security Documentation.
+- Defensive Mitigation Planning.
+
+---
+
+# 📂 Repository Structure
 
 ```text
 Towel-on-the-Sunbed-TryHackMe-Walkthrough/
@@ -492,15 +524,32 @@ Towel-on-the-Sunbed-TryHackMe-Walkthrough/
 
 ---
 
-# ⚠️ Responsible Disclosure
+# 📸 Screenshot Gallery
 
-This walkthrough documents activities performed **only within the authorized TryHackMe training environment**.
+| Stage | Screenshot |
+|-------|------------|
+| Dashboard | `01-dashboard-initial.png` |
+| Reward Workflow | `02-dashboard-staking.png` |
+| HTTP Capture | `03-burp-captured-claim.png` |
+| Burp Repeater | `04-repeater-request.png` |
+| Request Group | `05-repeater-tab-group.png` |
+| Parallel Execution | `06-repeater-parallel-send.png` |
+| Responses | `07-parallel-responses.png` |
+| Vault Unlock | `08-whale-vault-unlocked.png` |
+| Redacted Flag | `09-flag-redacted.png` |
+| Final State | `10-whale-vault-final.png` |
 
-The repository is intended for:
+---
+
+# ⚖️ Responsible Disclosure
+
+This documentation was created **exclusively for an authorized TryHackMe training environment**.
+
+The repository exists for:
 
 - Cybersecurity education.
-- Penetration testing practice.
-- Documentation portfolio development.
+- Portfolio documentation.
+- Responsible security research.
 - Secure software development awareness.
 
 No techniques demonstrated here should be used against systems without explicit authorization.
@@ -509,14 +558,12 @@ No techniques demonstrated here should be used against systems without explicit 
 
 <div align="center">
 
-# ⭐ Thank You for Visiting
+## 👨‍💻 Cybersecurity Portfolio
 
-### Towel on the Sunbed — TryHackMe Walkthrough
+# Anurag Revankar
 
-**Business Logic • Race Condition • Burp Suite Repeater**
+**Web Application Security • Penetration Testing • SOC & Blue Team • TryHackMe Documentation**
 
-Cybersecurity Portfolio by **Anurag Revankar**
-
-*Building practical cybersecurity knowledge through hands-on labs, professional documentation, and responsible security research.*
+⭐ *Thank you for visiting this security case study.*
 
 </div>
