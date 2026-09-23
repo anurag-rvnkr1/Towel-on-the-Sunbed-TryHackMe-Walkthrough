@@ -1,14 +1,12 @@
-title: "TryHackMe CTF"
-description: "Professional CTF documentation."
-
-theme: jekyll-theme-primer
-
+title: "Towel on the Sunbed | TryHackMe"
+description: "Portfolio documentation for the Towel on the Sunbed TryHackMe challenge."
+theme: jekyll-theme-hacker
+markdown: kramdown
 plugins:
   - jekyll-relative-links
-
+  - jekyll-optional-front-matter
 relative_links:
   enabled: true
   collections: true
-
 include:
   - docs
