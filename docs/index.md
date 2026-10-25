@@ -1,9 +1,3 @@
----
-layout: default
-title: "Towel on the Sunbed — TryHackMe Walkthrough"
-description: "Professional security case study documenting a business logic race condition in the Towel on the Sunbed TryHackMe challenge."
----
-
 <div class="ctf-hero">
 
   <h1>🌞 Towel on the Sunbed</h1>
